@@ -100,7 +100,7 @@ const Stake: React.FC<StakeProps> = ({
 								/>
 								<StyledActionSpacer />
 								{poolType !== PoolType.ARCHIVED ? (
-									<IconButton onClick={onPresentDeposit}>
+									<IconButton disabled>
 										<AddIcon />
 									</IconButton>
 								) : (
