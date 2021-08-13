@@ -11,12 +11,12 @@ import useTokenBalance from '../../../hooks/useTokenBalance'
 import useModal from '../../../hooks/useModal'
 import WithdrawModal from './WithdrawModal'
 import BigNumber from 'bignumber.js'
-import { getBaocxContract, getBaoAddress } from '../../../bao/utils'
-import useDeposit from '../../../hooks/useDepositCx'
+import { getBaoContract, getBaoAddress } from '../../../bao/utils'
+import useDepositCx from '../../../hooks/useDepositCx'
 import useBao from '../../../hooks/useBao'
 import DepositModal from './DepositModal'
 import baoIcon from '../../../assets/img/bao-icon.svg'
-import useWithdraw from '../../../hooks/useWithdrawCx'
+import useWithdrawCx from '../../../hooks/useWithdrawCx'
 import useAllowanceCx from '../../../hooks/useAllowanceCx'
 import useApproveCx from '../../../hooks/useApproveCx'
 
@@ -33,12 +33,12 @@ const SwapCxSwap: React.FC<SwapCxProps> = ({ withdrawableBalance }) => {
 	const walletBalance = useTokenBalance(address)
 
 	const [requestedApproval, setRequestedApproval] = useState(false)
-	const contract = useMemo(() => getBaocxContract(bao), [bao])
-	const allowance = useAllowanceCx(contract)
-	const { onApprove } = useApproveCx(contract)
+	const baoContract = useMemo(() => getBaoContract(bao), [bao])
+	const allowance = useAllowanceCx(baoContract)
+	const { onApprove } = useApproveCx(baoContract)
 
-	const { onDeposit } = useDeposit(address)
-	const { onWithdraw } = useWithdraw(address)
+	const { onDeposit } = useDepositCx(address)
+	const { onWithdraw } = useWithdrawCx(address)
 
 	const [onPresentDeposit] = useModal(
 		<DepositModal

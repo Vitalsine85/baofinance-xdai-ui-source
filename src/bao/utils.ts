@@ -57,10 +57,8 @@ export const gettBaoStakingContract = (bao: Bao): Contract => {
   return bao && bao.contracts && bao.contracts.tBaoStaking
 }
 
-export const getCxSwapContract = (
-  bao: Bao | null | undefined,
-): Contract | undefined => {
-  return bao?.contracts.cxswap
+export const getCxSwapContract = (bao: Bao): Contract => {
+  return bao && bao.contracts && bao.contracts.cxswap
 }
 
 export const getFarms = (bao: Bao): Farm[] => {
