@@ -37,7 +37,7 @@ const SwapCxSwap: React.FC<SwapCxProps> = ({ withdrawableBalance }) => {
 	const allowance = useAllowanceCxSwap(contract)
 	const { onApprove } = useApproveCxSwap(contract)
 
-	const { onDeposit } = useDeposit(address, tokenDecimals)
+	const { onDeposit } = useDeposit(address)
 	const { onWithdraw } = useWithdraw(address)
 
 	const [onPresentDeposit] = useModal(

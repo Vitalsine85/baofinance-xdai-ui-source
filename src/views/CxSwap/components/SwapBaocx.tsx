@@ -45,7 +45,7 @@ const SwapBaocx: React.FC<SwapCxProps> = ({ withdrawableBalance }) => {
 			max={walletBalance}
 			onConfirm={onDeposit}
 			tokenName={tokenName}
-			tokenDecimals={18}
+			tokenDecimals={tokenDecimals}
 		/>,
 	)
 
@@ -54,7 +54,7 @@ const SwapBaocx: React.FC<SwapCxProps> = ({ withdrawableBalance }) => {
 			max={withdrawableBalance}
 			onConfirm={onWithdraw}
 			tokenName={tokenName}
-			tokenDecimals={18}
+			tokenDecimals={tokenDecimals}
 		/>,
 	)
 
@@ -79,9 +79,9 @@ const SwapBaocx: React.FC<SwapCxProps> = ({ withdrawableBalance }) => {
 						<CardIcon>
 							<img src={baocxIcon} alt="" height="50" />
 						</CardIcon>
-						<Value value={getBalanceNumber(walletBalance, 18)} />
+						<Value value={getBalanceNumber(walletBalance, tokenDecimals)} />
 						<Label text={`${tokenName} in wallet`} />
-						<Value value={getBalanceNumber(withdrawableBalance, 18)} />
+						<Value value={getBalanceNumber(withdrawableBalance, tokenDecimals)} />
 						<Label text={`${tokenName} withdrawable`} />
 					</StyledCardHeader>
 					<StyledCardActions>
