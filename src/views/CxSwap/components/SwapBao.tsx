@@ -11,7 +11,7 @@ import useTokenBalance from '../../../hooks/useTokenBalance'
 import useModal from '../../../hooks/useModal'
 import WithdrawModal from './WithdrawModal'
 import BigNumber from 'bignumber.js'
-import { getBaoContract } from '../../../bao/utils'
+import { getBaocxContract, getBaoAddress } from '../../../bao/utils'
 import useDeposit from '../../../hooks/useDepositCx'
 import useBao from '../../../hooks/useBao'
 import DepositModal from './DepositModal'
@@ -26,17 +26,16 @@ interface SwapCxProps {
 
 const SwapCxSwap: React.FC<SwapCxProps> = ({ withdrawableBalance }) => {
 	const bao = useBao()
-
-	const address = useMemo(() => getBaoContract(bao)?.options.address, [bao])
 	const tokenName = 'BAO'
+	const address = useMemo(() => getBaoAddress(bao), [bao])
 	const tokenDecimals = 18
 
 	const walletBalance = useTokenBalance(address)
 
 	const [requestedApproval, setRequestedApproval] = useState(false)
-	const baoContract = useMemo(() => getBaoContract(bao), [bao])
-	const allowance = useAllowanceCxSwap(baoContract)
-	const { onApprove } = useApproveCxSwap(baoContract)
+	const contract = useMemo(() => getBaocxContract(bao), [bao])
+	const allowance = useAllowanceCxSwap(contract)
+	const { onApprove } = useApproveCxSwap(contract)
 
 	const { onDeposit } = useDeposit(address, tokenDecimals)
 	const { onWithdraw } = useWithdraw(address)

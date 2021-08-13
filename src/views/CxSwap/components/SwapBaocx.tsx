@@ -20,14 +20,16 @@ import useDepositCx from '../../../hooks/useDepositCx'
 import { getBaocxAddress, getBaocxContract } from '../../../bao/utils'
 import useBao from '../../../hooks/useBao'
 
-interface SwapPandaProps {
+interface SwapCxProps {
 	withdrawableBalance: BigNumber
 }
 
-const SwapBaocx: React.FC<SwapPandaProps> = ({ withdrawableBalance }) => {
+const SwapBaocx: React.FC<SwapCxProps> = ({ withdrawableBalance }) => {
 	const bao = useBao()
 	const tokenName = 'BAOcx'
 	const address = useMemo(() => getBaocxAddress(bao), [bao])
+	const tokenDecimals = 18
+
 	const walletBalance = useTokenBalance(address)
 
 	const [requestedApproval, setRequestedApproval] = useState(false)
