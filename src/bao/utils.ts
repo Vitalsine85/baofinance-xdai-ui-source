@@ -44,6 +44,7 @@ export const getBaoPriceContract = (bao: Bao): Contract => {
 export const getMasterChefContract = (bao: Bao): Contract => {
   return bao && bao.contracts && bao.contracts.masterChef
 }
+
 export const getBaocxContract = (bao: Bao): Contract => {
   return bao && bao.contracts && bao.contracts.baocx
 }

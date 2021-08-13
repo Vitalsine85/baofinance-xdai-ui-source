@@ -17,8 +17,8 @@ import useBao from '../../../hooks/useBao'
 import DepositModal from './DepositModal'
 import baoIcon from '../../../assets/img/bao-icon.svg'
 import useWithdraw from '../../../hooks/useWithdrawCx'
-import useAllowanceCxSwap from '../../../hooks/useAllowanceCx'
-import useApproveCxSwap from '../../../hooks/useApproveCx'
+import useAllowanceCx from '../../../hooks/useAllowanceCx'
+import useApproveCx from '../../../hooks/useApproveCx'
 
 interface SwapCxProps {
 	withdrawableBalance: BigNumber
@@ -34,8 +34,8 @@ const SwapCxSwap: React.FC<SwapCxProps> = ({ withdrawableBalance }) => {
 
 	const [requestedApproval, setRequestedApproval] = useState(false)
 	const contract = useMemo(() => getBaocxContract(bao), [bao])
-	const allowance = useAllowanceCxSwap(contract)
-	const { onApprove } = useApproveCxSwap(contract)
+	const allowance = useAllowanceCx(contract)
+	const { onApprove } = useApproveCx(contract)
 
 	const { onDeposit } = useDeposit(address)
 	const { onWithdraw } = useWithdraw(address)
