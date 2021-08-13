@@ -28,9 +28,16 @@ const Nav: React.FC = () => {
 			<StyledLink
 				exact
 				activeClassName="active"
+				to={{ pathname: '/staking', search: '?ref=' + refer }}
+			>
+				Staking
+			</StyledLink>
+			<StyledLink
+				exact
+				activeClassName="active"
 				to={{ pathname: '/CxSwap', search: '?ref=' + refer }}
 			>
-				CxSwap
+				1:1
 			</StyledLink>
 			<StyledAbsoluteLink
 				href="https://snapshot.page/#/baovotes.eth"
@@ -38,10 +45,7 @@ const Nav: React.FC = () => {
 			>
 				Vote
 			</StyledAbsoluteLink>
-			<StyledAbsoluteLink
-				href="https://gov.bao.finance"
-				target="_blank"
-			>
+			<StyledAbsoluteLink href="https://gov.bao.finance" target="_blank">
 				Forum
 			</StyledAbsoluteLink>
 			<StyledAbsoluteLink href="https://docs.bao.finance" target="_blank">

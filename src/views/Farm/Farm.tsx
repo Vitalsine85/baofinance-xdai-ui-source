@@ -15,7 +15,7 @@ import Harvest from './components/Harvest'
 import Stake from './components/Stake'
 
 const Farm: React.FC = () => {
-	const { farmId } = useParams()
+	const { farmId }: any = useParams()
 	const {
 		pid,
 		lpToken,
@@ -25,7 +25,7 @@ const Farm: React.FC = () => {
 		name,
 		icon,
 		refUrl,
-		poolType
+		poolType,
 	} = useFarm(farmId) || {
 		pid: 0,
 		lpToken: '',

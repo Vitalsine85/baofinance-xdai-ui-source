@@ -13,7 +13,7 @@ import theme from './theme'
 import Farms from './views/Farms'
 import Home from './views/Home'
 import CxSwap from './views/CxSwap'
-
+import Staking from './views/Staking'
 
 const url = new URL(window.location.toString())
 if (url.searchParams.has('ref')) {
@@ -48,6 +48,9 @@ const App: React.FC = () => {
 					</Route>
 					<Route path="/cxswap">
 						<CxSwap />
+					</Route>
+					<Route path="/staking">
+						<Staking />
 					</Route>
 				</Switch>
 			</Router>

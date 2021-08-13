@@ -27,18 +27,10 @@ const PageHeader: React.FC<PageHeaderProps> = ({ icon, subtitle, title }) => {
 			<Container size="sm">
 				<StyledPageHeader>
 					<StyledIcon>
-						<img src={icon} alt="" height="125" />
+						<img src={icon} height="125" alt="" />
 					</StyledIcon>
 					<StyledTitle>{title}</StyledTitle>
 					<StyledSubtitle>{subtitle}</StyledSubtitle>
-					<StyledSubtitle>
-						<br />
-						<br />
-						Tip: Using the "Buy" button will take you to exchanges via the Bao
-						affiliate links. 100% of the revenue from these goes back to the Bao
-						treasury which Bao holders own. <br />
-						Using these links grows your bags!
-					</StyledSubtitle>
 				</StyledPageHeader>
 			</Container>
 		)
@@ -47,7 +39,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ icon, subtitle, title }) => {
 			<Container size="sm">
 				<StyledPageHeader>
 					<StyledIcon>
-						<img src={icon} alt="" height="125" />
+						<img src={icon} height="125" alt="" />
 					</StyledIcon>
 					<StyledTitle>{title}</StyledTitle>
 					<StyledSubtitle>{subtitle}</StyledSubtitle>
