@@ -29,6 +29,7 @@ export class Bao {
   public readonly snapshot: Promise<string> | null | undefined
   public readonly baoAddress: string
   public readonly baocxAddress: string
+  public readonly tBaoAddress: string
   public readonly masterChefAddress: string
   public readonly wethAddress: string
   public readonly wethPriceAddress: string
@@ -74,6 +75,7 @@ export class Bao {
     if (networkId === 100) {
       this.baoAddress = contractAddresses.bao[networkId]
       this.baocxAddress = contractAddresses.baocx[networkId]
+      this.tBaoAddress = contractAddresses.tbao[networkId]
       this.masterChefAddress = contractAddresses.masterChef[networkId]
       this.wethAddress = contractAddresses.weth[networkId]
       this.wethPriceAddress = contractAddresses.wethPrice[networkId]

@@ -46,9 +46,6 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
 						<Label text="Locked BAOcx" />
 						<Spacer />
 					</StyledCardHeader>
-					<Label text={userInfo} />
-					<Spacer />
-					<Label text={userSubInfo} />
 					<StyledCardActions>
 						<Button
 							disabled={!earnings.toNumber() || pendingTx}

@@ -14,6 +14,8 @@ import MasterChefAbi from './abi/masterchef.json'
 import UniOracleABI from './abi/unioracle.json'
 import UNIV2PairAbi from './abi/uni_v2_lp.json'
 import WETHAbi from './abi/weth.json'
+import tBaoAbi from './abi/tbao.json'
+import TeaMakerAbi from './abi/teamaker.json'
 import {
   contractAddresses,
   SUBTRACT_GAS_LIMIT,
@@ -41,6 +43,7 @@ export class Contracts {
   masterChef: Contract
   cxswap: Contract
   baocx: Contract
+  tBaoStaking: Contract
   weth: Contract
   wethPrice: Contract
   baoPrice: Contract
@@ -62,10 +65,11 @@ export class Contracts {
     this.defaultGas = options.defaultGas
     this.defaultGasPrice = options.defaultGasPrice
 
-    this.bao = new this.web3.eth.Contract(BaocxAbi as AbiItem[])
+    this.baocx = new this.web3.eth.Contract(BaocxAbi as AbiItem[])
+    this.bao = new this.web3.eth.Contract(BaoAbi as AbiItem[])
     this.masterChef = new this.web3.eth.Contract(MasterChefAbi as AbiItem[])
     this.cxswap = new this.web3.eth.Contract(CxSwapAbi as AbiItem[])
-    this.baocx = new this.web3.eth.Contract(BaoAbi as AbiItem[])
+    this.tBaoStaking = new this.web3.eth.Contract(tBaoAbi as AbiItem[])
     this.weth = new this.web3.eth.Contract(WETHAbi as AbiItem[])
     this.wethPrice = new this.web3.eth.Contract(ChainOracle as AbiItem[])
     this.baoPrice = new this.web3.eth.Contract(UniOracleABI as AbiItem[])
@@ -102,6 +106,7 @@ export class Contracts {
       setProvider(this.baoPrice, contractAddresses.baoPrice[networkId])
       setProvider(this.baocx, contractAddresses.baocx[networkId])
       setProvider(this.cxswap, contractAddresses.cxswap[networkId])
+      setProvider(this.tBaoStaking, contractAddresses.tbao[networkId])
     }
     if (this.pools) {
       this.pools.forEach(({ lpContract, lpAddress, tokenAddress }) => {

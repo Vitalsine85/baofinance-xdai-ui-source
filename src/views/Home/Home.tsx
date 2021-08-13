@@ -65,9 +65,8 @@ const Home: React.FC = () => {
 			<Spacer size="md" />
 			<StyledInfo>
 				❗️<b>Disclaimer</b>: Bao is currently in alpha and has a two-person
-				engineering team. <br />
-				While we are scaling, there may be higher than normal risk of bugs and
-				we may be slower in being able to respond to them.
+				engineering team. While we are scaling, there may be higher than normal
+				risk of bugs and we may be slower in being able to respond to them.
 				<br />
 				Please partake accordingly.
 				<br />

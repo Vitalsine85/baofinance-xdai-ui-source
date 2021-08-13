@@ -45,11 +45,15 @@ export const getMasterChefContract = (bao: Bao): Contract => {
   return bao && bao.contracts && bao.contracts.masterChef
 }
 export const getBaocxContract = (bao: Bao): Contract => {
+  return bao && bao.contracts && bao.contracts.baocx
+}
+
+export const getBaoContract = (bao: Bao): Contract => {
   return bao && bao.contracts && bao.contracts.bao
 }
 
-export const getBaoContract = (bao: Bao | undefined): Contract | undefined => {
-  return bao?.contracts.bao
+export const gettBaoStakingContract = (bao: Bao): Contract => {
+  return bao && bao.contracts && bao.contracts.tBaoStaking
 }
 
 export const getCxSwapContract = (
@@ -136,19 +140,14 @@ export const getTotalLPWethValue = async (
   tokenPriceInWeth: BigNumber
   poolWeight: BigNumber
 }> => {
-  const [
-    tokenAmountWholeLP,
-    balance,
-    totalSupply,
-    lpContractWeth,
-    poolWeight,
-  ] = await Promise.all([
-    tokenContract.methods.balanceOf(lpContract.options.address).call(),
-    lpContract.methods.balanceOf(masterChefContract.options.address).call(),
-    lpContract.methods.totalSupply().call(),
-    wethContract.methods.balanceOf(lpContract.options.address).call(),
-    getPoolWeight(masterChefContract, pid),
-  ])
+  const [tokenAmountWholeLP, balance, totalSupply, lpContractWeth, poolWeight] =
+    await Promise.all([
+      tokenContract.methods.balanceOf(lpContract.options.address).call(),
+      lpContract.methods.balanceOf(masterChefContract.options.address).call(),
+      lpContract.methods.totalSupply().call(),
+      wethContract.methods.balanceOf(lpContract.options.address).call(),
+      getPoolWeight(masterChefContract, pid),
+    ])
 
   // Return p1 * w1 * 2
   const portionLp = new BigNumber(balance).div(new BigNumber(totalSupply))
@@ -257,8 +256,14 @@ export const getBaoPrice = async (bao: Bao): Promise<BigNumber> => {
   // return new BigNumber(amount)
 }
 
-export const getBaoSupply = async (bao: Bao): Promise<BigNumber> => {
-  return new BigNumber(await bao.contracts.bao.methods.totalSupply().call())
+export const getBaocxSupply = async (bao: Bao): Promise<BigNumber> => {
+  return new BigNumber(await bao.contracts.baocx.methods.totalSupply().call(),)
+}
+
+export const gettBaoSupply = async (bao: Bao): Promise<BigNumber> => {
+  return new BigNumber(
+    await bao.contracts.tBaoStaking.methods.totalSupply().call(),
+  )
 }
 
 export const getReferrals = async (

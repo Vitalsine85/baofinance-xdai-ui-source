@@ -27,7 +27,7 @@ const StakeBao: React.FC<StakeProps> = ({}) => {
 	const allowance = useAllowanceStaking()
 	const { onApprove } = useApproveStaking()
 
-	const tokenBalance = useTokenBalance(contractAddresses.bao[100])
+	const tokenBalance = useTokenBalance(contractAddresses.baocx[100])
 
 	const { onEnter } = useEnter()
 	const { onLeave } = useLeave()

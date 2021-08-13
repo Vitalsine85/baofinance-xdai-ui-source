@@ -15,8 +15,8 @@ import useFarms from '../../../hooks/useFarms'
 import useTokenBalance from '../../../hooks/useTokenBalance'
 import useBao from '../../../hooks/useBao'
 import {
-	getBaoAddress,
-	getBaoSupply,
+	getBaocxAddress,
+	getBaocxSupply,
 	getReferrals,
 	getMasterChefContract,
 } from '../../../bao/utils'
@@ -79,13 +79,13 @@ const Balances: React.FC = () => {
 	const [totalReferrals, setTotalReferrals] = useState<string>()
 	const [refLink, setRefLink] = useState<string>()
 	const bao = useBao()
-	const baoBalance = useTokenBalance(getBaoAddress(bao))
+	const baoBalance = useTokenBalance(getBaocxAddress(bao))
 	const masterChefContract = getMasterChefContract(bao)
 	const { account, ethereum }: { account: any; ethereum: any } = useWallet()
 
 	useEffect(() => {
 		async function fetchTotalSupply() {
-			const supply = await getBaoSupply(bao)
+			const supply = await getBaocxSupply(bao)
 			setTotalSupply(supply)
 		}
 		if (bao) {
