@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { provider } from 'web3-core'
 import BigNumber from 'bignumber.js'
-import useBao from './useBao'
+import { useCallback, useEffect, useState } from 'react'
 import { useWallet } from 'use-wallet'
+import { provider } from 'web3-core'
 import { Contract } from 'web3-eth-contract'
-import { getAllowance } from '../utils/erc20'
 import { getCxSwapContract } from '../bao/utils'
+import { getAllowance } from '../utils/erc20'
+import useBao from './useBao'
 
 const useAllowanceCx = (contract: Contract): BigNumber => {
   const [allowance, setAllowance] = useState(new BigNumber(0))

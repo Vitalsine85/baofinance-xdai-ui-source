@@ -1,24 +1,24 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
+import baocxIcon from '../../../assets/img/baocx-icon.svg'
+import { getBaocxAddress, getBaocxContract } from '../../../bao/utils'
 import Button from '../../../components/Button'
 import Card from '../../../components/Card'
 import CardContent from '../../../components/CardContent'
 import CardIcon from '../../../components/CardIcon'
 import Label from '../../../components/Label'
 import Value from '../../../components/Value'
+import useAllowanceCx from '../../../hooks/useAllowanceCx'
+import useApproveCx from '../../../hooks/useApproveCx'
+import useBao from '../../../hooks/useBao'
+import useDepositCx from '../../../hooks/useDepositCx'
 import useModal from '../../../hooks/useModal'
 import useTokenBalance from '../../../hooks/useTokenBalance'
+import useWithdrawCx from '../../../hooks/useWithdrawCx'
 import { getBalanceNumber } from '../../../utils/formatBalance'
 import DepositModal from './DepositModal'
 import WithdrawModal from './WithdrawModal'
-import useWithdrawCx from '../../../hooks/useWithdrawCx'
-import useAllowanceCx from '../../../hooks/useAllowanceCx'
-import useApproveCx from '../../../hooks/useApproveCx'
-import baocxIcon from '../../../assets/img/baocx-icon.svg'
-import useDepositCx from '../../../hooks/useDepositCx'
-import { getBaocxAddress, getBaocxContract } from '../../../bao/utils'
-import useBao from '../../../hooks/useBao'
 
 interface SwapCxProps {
 	withdrawableBalance: BigNumber
@@ -81,7 +81,9 @@ const SwapBaocx: React.FC<SwapCxProps> = ({ withdrawableBalance }) => {
 						</CardIcon>
 						<Value value={getBalanceNumber(walletBalance, tokenDecimals)} />
 						<Label text={`${tokenName} in wallet`} />
-						<Value value={getBalanceNumber(withdrawableBalance, tokenDecimals)} />
+						<Value
+							value={getBalanceNumber(withdrawableBalance, tokenDecimals)}
+						/>
 						<Label text={`${tokenName} withdrawable`} />
 					</StyledCardHeader>
 					<StyledCardActions>

@@ -1,9 +1,9 @@
 import { useCallback } from 'react'
-import { Contract } from 'web3-eth-contract'
-import useBao from './useBao'
 import { useWallet } from 'use-wallet'
-import { approve, getCxSwapContract } from '../bao/utils'
 import { provider } from 'web3-core'
+import { Contract } from 'web3-eth-contract'
+import { approve, getCxSwapContract } from '../bao/utils'
+import useBao from './useBao'
 
 const useApproveCx = (
   tokenContract: Contract,

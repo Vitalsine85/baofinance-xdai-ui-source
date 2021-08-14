@@ -1,8 +1,8 @@
 import BigNumber from 'bignumber.js'
 import { ethers } from 'ethers'
-import { Bao } from './Bao'
 import { Contract } from 'web3-eth-contract'
 import { Farm } from '../contexts/Farms'
+import { Bao } from './Bao'
 
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
@@ -256,7 +256,7 @@ export const getBaoPrice = async (bao: Bao): Promise<BigNumber> => {
 }
 
 export const getBaocxSupply = async (bao: Bao): Promise<BigNumber> => {
-  return new BigNumber(await bao.contracts.baocx.methods.totalSupply().call(),)
+  return new BigNumber(await bao.contracts.baocx.methods.totalSupply().call())
 }
 
 export const gettBaoSupply = async (bao: Bao): Promise<BigNumber> => {

@@ -14,10 +14,6 @@ import { useBaoCxWithdrawableBalance } from '../../hooks/useOne21'
 import SwapBao from './components/SwapBao'
 import SwapBaocx from './components/SwapBaocx'
 
-
-
-
-
 const CxSwap: React.FC = () => {
 	const { path } = useRouteMatch()
 	const { account } = useWallet()
